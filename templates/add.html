@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Cafe</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Add a New Cafe</h1>
+        <form method="post">
+            Name: <input type="text" name="name" required><br>
+            Location: <input type="text" name="location" required><br>
+            Coffee Price: <input type="text" name="coffee_price"><br>
+            Wifi: <input type="checkbox" name="wifi" value="Yes"><br>
+            Power Outlet: <input type="checkbox" name="power_outlet" value="Yes"><br>
+            <input type="submit" value="Add Cafe">
+        </form>
+        <a class="button" href="/">Back to Cafes</a>
+    </div>
+</body>
+</html>

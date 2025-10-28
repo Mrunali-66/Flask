@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Color Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Top 10 Colors</h1>
+
+        <img src="{{ url_for('static', filename='uploads/' + image_file) }}" 
+             alt="Uploaded Image" class="preview">
+
+        <div class="color-grid">
+            {% for color in colors %}
+            <div class="color-box" style="background-color: {{ color }};" onclick="copyColor('{{ color }}')">
+                <p>{{ color }}</p>
+            </div>
+            {% endfor %}
+        </div>
+
+        <a href="/" class="back-btn">← Upload Another Image</a>
+    </div>
+
+    <div id="toast" class="toast">✓ Color copied to clipboard!</div>
+
+    <script>
+        function copyColor(color) {
+            navigator.clipboard.writeText(color).then(function() {
+                const toast = document.getElementById('toast');
+                toast.classList.add('show');
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                }, 2000);
+            }).catch(function(err) {
+                console.error('Failed to copy:', err);
+            });
+        }
+    </script>
+</body>
+</html>
+
+

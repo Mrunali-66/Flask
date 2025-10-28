@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Color Palette Extractor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>🎨 Color Palette Extractor</h1>
+        <p class="subtitle">Upload an image to extract its dominant colors</p>
+
+        <form method="POST" enctype="multipart/form-data">
+            <div class="upload-area" style="cursor: pointer;" onclick="document.getElementById('file-input').click();">
+                <div class="upload-icon">📁</div>
+                <span class="file-label">Click to browse</span>
+                <span class="file-info">Supported formats: JPG, PNG, JPEG</span>
+            </div>
+            
+            <input type="file" name="image" id="file-input" accept="image/*" required style="display: none;" onchange="showFileName()">
+            
+            <div id="selectedFile" class="selected-file" style="display: none;"></div>
+            
+            <button type="submit" class="btn">Extract Colors</button>
+        </form>
+    </div>
+
+    <script>
+        function showFileName() {
+            const fileInput = document.getElementById('file-input');
+            const selectedFile = document.getElementById('selectedFile');
+            if (fileInput.files && fileInput.files[0]) {
+                selectedFile.textContent = '✓ ' + fileInput.files[0].name;
+                selectedFile.style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>
